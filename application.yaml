@@ -1,9 +1,8 @@
-demo-service-jar:
+demo:
   type: jar
   name: demo
   version: 1.4.0
-demo-service-container:
+githubtest.demoservice:
   type: container
   name: githubtest.demoservice
   version: latest
-

@@ -20,4 +20,17 @@ jobs:
       - name: 'Hello World'
         run: |
           echo "I am here!"
-          echo "Inputs are: ${{inputs.artifact_name }} : ${{inputs.artifact_version }} (${{inputs.artifact_buildnumber }})"
+          echo "Inputs are: ${{inputs.artifact_name}} : ${{inputs.artifact_version}} (${{inputs.artifact_buildnumber}})"
+
+      - name: yq - portable yaml processor
+        uses: mikefarah/yq@v4.35.2
+
+      - name: update application.yml
+        run: |
+          yq  -i '.${{inputs.artifact_name }}.version = ${{inputs.artifact_version}}' application.yaml
+          cat application.yaml
+
+      - name: commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: application.yaml
