@@ -9,6 +9,9 @@ on:
       artifact_version:
         required: true
         type: string
+      artifact_buildnumber:
+        required: false
+        type: string
 
 jobs:
   update-application-yaml:
@@ -17,4 +20,4 @@ jobs:
       - name: 'Hello World'
         run: |
           echo "I am here!"
-          echo "Inputs are: ${{inputs.artifact_name }} : ${{inputs.artifact_version }}
+          echo "Inputs are: ${{inputs.artifact_name }} : ${{inputs.artifact_version }} (${{inputs.artifact_buildnumber }})"
