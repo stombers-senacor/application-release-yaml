@@ -6,3 +6,6 @@ githubtest.demoservice:
   type: container
   name: githubtest.demoservice
   version: latest
+githubtest:
+  demoservice:
+    version: 1.7.12-SNAPSHOT
