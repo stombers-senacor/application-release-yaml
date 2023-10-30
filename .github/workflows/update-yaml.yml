@@ -33,7 +33,7 @@ jobs:
 
       - name: 'Update application.yml'
         run: |
-          yq  -i '.${{inputs.artifact_name }}.version = ${{inputs.artifact_version}}' application.yaml
+          yq  -i '.${{inputs.artifact_name }}.version = "${{inputs.artifact_version}}"' application.yaml
           cat application.yaml
 
       - name: 'Commit and push changes'
