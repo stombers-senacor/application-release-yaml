@@ -1,0 +1,20 @@
+name: Update Release Yaml
+
+on:
+  workflow_call:
+    inputs:
+      artifact_name:
+        required: true
+        type: string
+      artifact_version:
+        required: true
+        type: string
+
+jobs:
+  update-application-yaml:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Hello World'
+        run: |
+          echo "I am here!"
+          echo "Inputs are: ${{inputs.artifact_name }} : ${{inputs.artifact_version }}
