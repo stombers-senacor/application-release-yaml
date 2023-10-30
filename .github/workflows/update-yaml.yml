@@ -25,15 +25,18 @@ jobs:
           echo "I am here!"
           echo "Inputs are: ${{inputs.artifact_name}} : ${{inputs.artifact_version}} (${{inputs.artifact_buildnumber}})"
 
-      - name: yq - portable yaml processor
+      - name: 'Checkout Source Code'
+        uses: actions/checkout@v3
+
+      - name: 'Install yq - portable yaml processor'
         uses: mikefarah/yq@v4.35.2
 
-      - name: update application.yml
+      - name: 'Update application.yml'
         run: |
           yq  -i '.${{inputs.artifact_name }}.version = ${{inputs.artifact_version}}' application.yaml
           cat application.yaml
 
-      - name: commit changes
+      - name: 'Commit and push changes'
         uses: EndBug/add-and-commit@v9
         with:
           add: application.yaml
