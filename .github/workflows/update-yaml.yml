@@ -1,6 +1,7 @@
 name: Update Release Yaml
 
 on:
+  workflow_call:
   workflow_dispatch:
     inputs:
       artifact_name:
